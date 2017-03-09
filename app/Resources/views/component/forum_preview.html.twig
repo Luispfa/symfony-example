@@ -1,0 +1,37 @@
+<div class="media">
+    {% block forumImageContainter %}
+        <div class="media-left">
+            <a href="{% block forumUrl %}{{ path('forum_show', {slug: forum.slug}) }}{% endblock %}">
+                <img class="media-object" src="{{ forum.image }}" alt="Imagen del foro">
+            </a>
+        </div>
+    {% endblock %}
+    {% block forumDetailsContainer %}
+        <div class="media-body">
+            <h4 class="media-heading">
+                <a href="{{ block('forumUrl') }}">
+                    {{ forum.name }}
+                </a>
+                {% block forumDetailsLabel %}
+                    <span class="label {{ forum.featured ? 'label-success' : 'label-primary' }}">
+                        {{ forum.featured ? 'Destacado' : 'Activo' }}
+                    </span>
+                {% endblock %}
+            </h4>
+            <p>{{ forum.createdAt | date('Y-m-d') }}</p>
+            {% block forumDetailsDescription %}
+                <p>
+                    {{ forum.description }}
+                </p>
+            {% endblock %}
+            <p>
+                {% block forumDetailsTags %}
+                    {% for tag in forum.tags %}
+                        <span class="label label-default">{{ tag }}</span>
+                    {% endfor %}
+                {% endblock %}
+            </p>
+        </div>
+    {% endblock %}
+</div>
+

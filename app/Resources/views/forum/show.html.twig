@@ -1,0 +1,49 @@
+{% extends 'layout/two_column.html.twig' %}
+
+{% block mainContent %}
+    <h1>{{ forum.name }}</h1>
+
+    {% include 'component/breadcrumbs.html.twig' with {
+        pages: [
+            {
+                title: 'Inicio',
+                link: path('homepage')
+            }, {
+                title: 'Foros',
+                link: path('forum_list')
+            }, {
+                title: forum.name,
+            }
+        ]
+    } %}
+
+    {% for post in forum.posts %}
+        {% include 'component/forum_post.html.twig' with { post: post } %}
+    {% endfor %}
+
+    <p>
+        <a href="{{ path('forum_list') }}" type="button" class="btn btn-primary">Volver al listado</a>
+    </p>
+{% endblock %}
+
+{% block sidebarContent %}
+    {% include 'component/sponsor.html.twig' %}
+    <h2>Foros más activos</h2>
+    {% for forum in mostActiveForums %}
+        {% embed 'component/forum_preview.html.twig' with {
+            forum: forum
+        } %}
+            {% block forumImageContainter %}{% endblock %}
+            {% block forumDetailsLabel %}{% endblock %}
+            {% block forumDetailsDescription %}
+                {{ forum.description | slice(0, 50) }}...
+            {% endblock %}
+            {% block forumDetailsTags %}
+                <span class="label label-default">
+                    {{ forum.tags | length }} etiquetas
+                </span>
+            {% endblock %}
+        {% endembed %}
+    {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,11 @@
+#forum_index:
+#    path: /
+#    defaults:
+#        _controller: FrameworkBundle:Template:template
+#        template: default/index.html.twig
+#        maxAge: 86400
+#        sharedAge: 86400
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

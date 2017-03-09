@@ -1,0 +1,53 @@
+{% extends 'layout/two_column.html.twig' %}
+
+{% block mainContent %}
+    <h1>Este es el perfil de @{{ user.username }}</h1>
+
+    {% include 'component/breadcrumbs.html.twig' with {
+        pages: [
+            {
+                title: 'Inicio',
+                link: path('homepage')
+            }, {
+                title: 'Perfíl',
+                link: path('profile_edit')
+            }, {
+                title: '@' ~ user.username,
+            }
+        ]
+    } %}
+
+    <div class="row">
+        <div class="col-md-3">
+            <img style="width: 100%;" src="{{ user.image }}">
+        </div>
+        <div class="col-md-9">
+            {% set totalPosts = 100 %}
+            <p>
+                <strong>Nombre y apellidos</strong><br>
+                {{ user.name ~ ' ' ~ user.surname }}
+            </p>
+            <p>
+                <strong>Nombre de usuario</strong><br>
+                @{{ user.username }}
+            </p>
+            <p>
+                <strong>Email</strong><br>
+                {{ user.email }}
+            </p>
+            <p>
+                <strong>Posts totales</strong><br>
+                {{ totalPosts }}
+            </p>
+            <p>
+                <strong>Bio</strong><br>
+                {{ user.bio | capitalize | slice(0, 100)}}...
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebarContent %}
+    {% include 'component/sponsor.html.twig' %}
+{% endblock %}
+

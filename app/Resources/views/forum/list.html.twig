@@ -1,0 +1,39 @@
+{% extends 'layout/two_column.html.twig' %}
+
+{% block mainContent %}
+    <h1>Este es el listado de foros</h1>
+
+    {% include 'component/breadcrumbs.html.twig' with {
+        pages: [
+            {
+                title: 'Inicio',
+                link: path('homepage')
+            }, {
+                title: 'Foros'
+            }
+        ]
+    } %}
+
+    <p>Actualmente existen {{ forums | length }} foros activos</p>
+
+    {% for forum in forums %}
+        {% include 'component/forum_preview.html.twig' with {
+            forum: forum
+        }%}
+    {% endfor %}
+    <p>
+        <a href="{{ path('homepage') }}"
+           type="button"
+           class="btn btn-primary"
+           style="margin-top: 20px">Volver al inicio</a>
+    </p>
+{% endblock %}
+
+{% block sidebarContent %}
+    {% include 'component/sponsor.html.twig' %}
+    <h2>Usuarios más activos</h2>
+    {% for user in mostActiveUsers %}
+        {% include 'component/user_preview.html.twig' with {user: user} %}
+    {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,40 @@
+{% extends 'layout/one_column.html.twig' %}
+
+{% block content %}
+    <h1>Crear nuevo foro</h1>
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.name, 'Nombre') }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.name) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.description) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.category) }}
+        {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.category) }}
+    </div>
+    <div class="form-group">
+        <label for="tags">Tags</label>
+        <ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
+        </ul>
+        {{ form_errors(form.tags) }}
+    </div>
+    <div class="checkbox">
+        <label>
+            {{ form_widget(form.featured) }}
+            Destacado
+        </label>
+    </div>
+    <input type="submit" value="Create" class="btn btn-default"/>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent()}}
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}

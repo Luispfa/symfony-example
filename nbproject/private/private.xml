@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/var/www/html/escuelait-app/app/config/config_test.yml</file>
+            <file>file:/var/www/html/escuelait-app/src/AppBundle/Repository/ForumRepository.php</file>
+            <file>file:/var/www/html/escuelait-app/src/AppBundle/Controller/ProfileController.php</file>
+            <file>file:/var/www/html/escuelait-app/src/AppBundle/Repository/CategoryRepository.php</file>
+            <file>file:/var/www/html/escuelait-app/app/config/parameters.yml.dist</file>
+            <file>file:/var/www/html/escuelait-app/src/AppBundle/Controller/ForumController.php</file>
+            <file>file:/var/www/html/escuelait-app/app/config/services.yml</file>
+            <file>file:/var/www/html/escuelait-app/src/AppBundle/Controller/SecurityController.php</file>
+            <file>file:/var/www/html/escuelait-app/app/config/parameters.yml</file>
+            <file>file:/var/www/html/escuelait-app/src/AppBundle/Controller/PostController.php</file>
+            <file>file:/var/www/html/escuelait-app/src/AppBundle/Entity/Forum.php</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,99 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use AppBundle\Util\Slugger;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Table("tag")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TagRepository")
+ */
+class Tag
+{
+    /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Forum", mappedBy="tags")
+     */
+    private $forums;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->forums = new ArrayCollection();
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+        $this->slug = $name;
+
+        return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    public function getForums()
+    {
+        return $this->forums;
+    }
+
+    public function addForum(Forum $forum)
+    {
+        $this->forums[] = $forum;
+
+        return $this;
+    }
+
+    public function removeForum(Forum $forum)
+    {
+        $this->forums->removeElement($forum);
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9">
+                {% block mainContent %}{% endblock %}
+            </div>
+            <div class="col-lg-3">
+                {% block sidebarContent %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h1>Añade un nuevo post al foro {{ forum.name }}</h1>
+
+    {{ form(form, {'action': path('post_new',{slug:forum.slug})}) }}
+    {#{ form_start(form)}}
+    <div class="prueba"style="background: red">
+        {{ form_widget(form.content, {'attr':{
+            'style': 'background: blue'   
+            }}) }}
+        {{ form_label(form.content, 'Contenido', {
+            'label_attr':{
+                'style': 'background: green'
+            }}) 
+        }}
+    </div>
+    {{ form_end(form)}#}
+
+{% endblock %}

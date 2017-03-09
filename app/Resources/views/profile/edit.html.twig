@@ -1,0 +1,34 @@
+{% extends 'layout/two_column.html.twig' %}
+
+{% block mainContent %}
+    <h1>Aquí puedes editar tu perfíl</h1>
+    {% include 'component/breadcrumbs.html.twig' with {
+    pages: [
+        {
+            title: 'Inicio',
+            link: path('homepage')
+        }, {
+            title: 'Perfíl',
+        }]
+    } %}
+    <form>
+        <div class="form-group">
+            <label for="profile_name">Nombre de usuario</label>
+            <input type="text" class="form-control" id="profile_name" placeholder="nombreusuario">
+        </div>
+        <div class="form-group">
+            <label for="profile_email">Email</label>
+            <input type="email" class="form-control" id="profile_email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="profile_password">Password</label>
+            <input type="password" class="form-control" id="profile_password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Enviar</button>
+    </form>
+{% endblock %}
+
+{% block sidebarContent %}
+    {% include 'component/sponsor.html.twig' %}
+{% endblock %}
+

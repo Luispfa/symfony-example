@@ -1,0 +1,14 @@
+<ol class="breadcrumb">
+    {% for page in pages %}
+        <li {% if loop.last %}class="active"{% endif %}>
+            {% if not loop.last %}
+                <a href="{{ page.link }}">
+            {% endif %}
+                {{ page.title }}
+            {% if not loop.last %}
+                </a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ol>
+
